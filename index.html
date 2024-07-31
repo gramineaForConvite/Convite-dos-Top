@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S ou N</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Academia + Pizza essa sexta?</h1>
+        <p>Aceitas?</p>
+        <div class="respostas">
+            <button class="botao" onclick="window.location.href='sim.html'">Sim</button>
+            <button class="botao" id="naoBotao">Não</button>
+        </div>
+    </div>
+
+    <script>
+        const naoBotao = document.getElementById('naoBotao');
+        const margin = 50; // margem de segurança aumentada
+
+        naoBotao.addEventListener('mouseover', moveButton);
+        naoBotao.addEventListener('mousemove', moveButton);
+
+        function moveButton() {
+            const windowHeight = window.innerHeight;
+            const windowWidth = window.innerWidth;
+            const naoBotaoRect = naoBotao.getBoundingClientRect();
+
+            let newTop = Math.random() * (windowHeight - naoBotaoRect.height - 2 * margin) + margin;
+            let newLeft = Math.random() * (windowWidth - naoBotaoRect.width - 2 * margin) + margin;
+
+            // Garantir que o botão não saia da área visível
+            newTop = Math.max(margin, Math.min(newTop, windowHeight - naoBotaoRect.height - margin));
+            newLeft = Math.max(margin, Math.min(newLeft, windowWidth - naoBotaoRect.width - margin));
+
+            naoBotao.style.position = 'absolute';
+            naoBotao.style.top = newTop + 'px';
+            naoBotao.style.left = newLeft + 'px';
+        }
+    </script>
+</body>
+</html>
